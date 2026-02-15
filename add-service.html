@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة خدمة جديدة | زغروطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style> 
+        body { font-family: 'Cairo', sans-serif; } 
+        /* تنسيق منطقة رفع الصور */
+        .upload-area {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%23DB2777FF' stroke-width='2' stroke-dasharray='10%2c 10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            background-color: #fdf2f8; /* Pink-50 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#C2185B] text-white flex flex-col hidden md:flex shadow-2xl z-20">
+        <div class="p-6 text-2xl font-bold border-b border-pink-400 text-center flex items-center justify-center gap-2">
+            <span>✨</span> زغروطة للأعمال
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <a href="vendor-dashboard.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>📊</span> الرئيسية</a>
+            <a href="my-services.html" class="flex items-center gap-3 p-3 rounded-xl bg-white/20 font-bold transition shadow-inner"><span>👗</span> خدماتي</a>
+            <a href="bookings.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>📅</span> الحجوزات</a>
+            <a href="messages.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>💬</span> الرسائل</a>
+            <a href="settings.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>⚙️</span> الإعدادات</a>
+        </nav>
+        <div class="p-4 border-t border-pink-400">
+            <a href="index.html" class="block p-3 text-center bg-[#880E4F] rounded-xl hover:bg-red-900 transition text-sm font-bold shadow-lg">خروج</a>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <header class="bg-white shadow-sm p-4 flex justify-between items-center px-8 z-10">
+            <h2 class="text-xl font-bold text-gray-700 flex items-center gap-2">
+                <a href="my-services.html" class="text-gray-400 hover:text-pink-600 transition">خدماتي</a>
+                <span class="text-gray-300">/</span>
+                <span>إضافة خدمة جديدة</span>
+            </h2>
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-pink-100 rounded-full border-2 border-pink-500 flex items-center justify-center text-pink-600 font-bold">A</div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8 bg-gray-50">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                
+                <h1 class="text-2xl font-bold text-gray-800 mb-8 border-b pb-4">بيانات الخدمة</h1>
+
+                <form class="space-y-8">
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">صور الخدمة (الحد الأقصى 5 صور)</label>
+                        <div class="upload-area rounded-3xl h-48 flex flex-col items-center justify-center cursor-pointer relative">
+                            <input type="file" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">📸</div>
+                                <p class="font-bold text-gray-600">اضغط لرفع الصور أو اسحبها هنا</p>
+                                <p class="text-xs text-gray-400 mt-1">PNG, JPG حتى 5 ميجابايت</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-2">اسم الخدمة</label>
+                            <input type="text" placeholder="مثلاً: فستان زفاف ملكي 2026" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-2">السعر (ج.م)</label>
+                            <input type="number" placeholder="0.00" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-2">القسم (Category)</label>
+                            <select class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition cursor-pointer">
+                                <option>اختر القسم...</option>
+                                <option>فساتين زفاف</option>
+                                <option>قاعات أفراح</option>
+                                <option>ميك أب آرتيست</option>
+                                <option>سيشين تصوير (Photographer)</option>
+                                <option>بدل رجالي</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-2">المدينة / المنطقة</label>
+                            <input type="text" placeholder="مثلاً: القاهرة، مدينة نصر" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-600 mb-2">وصف تفصيلي</label>
+                        <textarea rows="5" placeholder="اكتب كل التفاصيل اللي تهم العروسة هنا..." class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition"></textarea>
+                    </div>
+
+                    <div class="flex justify-end gap-4 pt-4 border-t">
+                        <button type="button" onclick="location.href='my-services.html'" class="px-8 py-3 bg-white border border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition">إلغاء</button>
+                        <button type="button" class="px-8 py-3 bg-pink-600 text-white rounded-xl font-bold shadow-lg hover:bg-pink-700 hover:-translate-y-1 transition transform flex items-center gap-2">
+                            <span>✨</span> نشر الخدمة
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

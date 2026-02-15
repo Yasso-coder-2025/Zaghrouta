@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحجوزات | زغروطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Cairo', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#C2185B] text-white flex flex-col hidden md:flex shadow-2xl">
+        <div class="p-6 text-2xl font-bold border-b border-pink-400 text-center flex items-center justify-center gap-2">
+            <span>✨</span> زغروطة للأعمال
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <a href="vendor-dashboard.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>📊</span> الرئيسية</a>
+            <a href="my-services.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>👗</span> خدماتي</a>
+            <a href="bookings.html" class="flex items-center gap-3 p-3 rounded-xl bg-white/20 font-bold transition shadow-inner"><span>📅</span> الحجوزات</a>
+            <a href="messages.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>💬</span> الرسائل</a>
+            <a href="settings.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>⚙️</span> الإعدادات</a>
+        </nav>
+        <div class="p-4 border-t border-pink-400">
+            <a href="index.html" class="block p-3 text-center bg-[#880E4F] rounded-xl hover:bg-red-900 transition text-sm font-bold shadow-lg">خروج</a>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <header class="bg-white shadow-sm p-4 flex justify-between items-center px-8 z-10">
+            <h2 class="text-xl font-bold text-gray-700 flex items-center gap-2"><span>📅</span> إدارة الحجوزات</h2>
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-pink-100 rounded-full border-2 border-pink-500 flex items-center justify-center text-pink-600 font-bold">A</div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8">
+            
+            <div class="flex gap-4 mb-6 border-b border-gray-200 pb-1">
+                <button onclick="filterBookings('all', this)" class="filter-btn active px-4 py-2 text-pink-600 font-bold border-b-2 border-pink-600 hover:bg-pink-50 rounded-t-lg transition">الكل</button>
+                <button onclick="filterBookings('pending', this)" class="filter-btn px-4 py-2 text-gray-500 font-medium hover:text-pink-600 hover:bg-gray-100 rounded-t-lg transition">قيد الانتظار</button>
+                <button onclick="filterBookings('confirmed', this)" class="filter-btn px-4 py-2 text-gray-500 font-medium hover:text-pink-600 hover:bg-gray-100 rounded-t-lg transition">المؤكدة (المسجلة)</button>
+                <button onclick="filterBookings('cancelled', this)" class="filter-btn px-4 py-2 text-gray-500 font-medium hover:text-pink-600 hover:bg-gray-100 rounded-t-lg transition">الملغية / المنتهية</button>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <table class="w-full text-right">
+                    <thead class="bg-gray-50 text-gray-500 text-sm font-semibold border-b">
+                        <tr>
+                            <th class="p-5">رقم الحجز</th>
+                            <th class="p-5">العروسة</th>
+                            <th class="p-5">الخدمة</th>
+                            <th class="p-5">التاريخ</th>
+                            <th class="p-5">الحالة</th>
+                            <th class="p-5 text-center">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTable" class="divide-y divide-gray-100 text-sm">
+                        
+                        <tr class="booking-row hover:bg-pink-50 transition" data-status="pending">
+                            <td class="p-5 font-bold text-gray-400">#BK-2024</td>
+                            <td class="p-5 font-bold text-gray-800">سارة أحمد</td>
+                            <td class="p-5 text-gray-600">فستان زفاف ملكي</td>
+                            <td class="p-5">20 مارس 2026</td>
+                            <td class="p-5"><span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold border border-yellow-200">⏳ قيد الانتظار</span></td>
+                            <td class="p-5 flex justify-center gap-2">
+                                <button class="bg-green-50 text-green-600 p-2 rounded-lg hover:bg-green-100">✅</button>
+                                <button class="bg-red-50 text-red-600 p-2 rounded-lg hover:bg-red-100">❌</button>
+                            </td>
+                        </tr>
+
+                        <tr class="booking-row hover:bg-pink-50 transition" data-status="confirmed">
+                            <td class="p-5 font-bold text-gray-400">#BK-2022</td>
+                            <td class="p-5 font-bold text-gray-800">منى زكي</td>
+                            <td class="p-5 text-gray-600">باكيدج خطوبة</td>
+                            <td class="p-5">25 مارس 2026</td>
+                            <td class="p-5"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold border border-green-200">✔️ مؤكد</span></td>
+                            <td class="p-5 flex justify-center gap-2">
+                                <button class="bg-blue-50 text-blue-600 p-2 rounded-lg hover:bg-blue-100 w-full font-bold text-xs">عرض</button>
+                            </td>
+                        </tr>
+
+                        <tr class="booking-row hover:bg-pink-50 transition" data-status="pending">
+                            <td class="p-5 font-bold text-gray-400">#BK-2025</td>
+                            <td class="p-5 font-bold text-gray-800">نور الشريف</td>
+                            <td class="p-5 text-gray-600">قاعة الزمردة</td>
+                            <td class="p-5">01 أبريل 2026</td>
+                            <td class="p-5"><span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold border border-yellow-200">⏳ قيد الانتظار</span></td>
+                            <td class="p-5 flex justify-center gap-2">
+                                <button class="bg-green-50 text-green-600 p-2 rounded-lg hover:bg-green-100">✅</button>
+                                <button class="bg-red-50 text-red-600 p-2 rounded-lg hover:bg-red-100">❌</button>
+                            </td>
+                        </tr>
+
+                         <tr class="booking-row hover:bg-pink-50 transition opacity-60" data-status="cancelled">
+                            <td class="p-5 font-bold text-gray-400">#BK-2010</td>
+                            <td class="p-5 font-bold text-gray-800">ياسمين صبري</td>
+                            <td class="p-5 text-gray-600">ميك أب سواريه</td>
+                            <td class="p-5">15 فبراير 2026</td>
+                            <td class="p-5"><span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold border border-red-200">🚫 ملغي</span></td>
+                            <td class="p-5 flex justify-center gap-2">
+                                <span class="text-xs text-gray-400">لا يوجد إجراء</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function filterBookings(status, btn) {
+            // 1. تغيير شكل الزراير (نخلي الزرار اللي تداس عليه "نشط")
+            // نشيل الاستايل النشط من كل الزراير
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('text-pink-600', 'font-bold', 'border-b-2', 'border-pink-600');
+                b.classList.add('text-gray-500', 'font-medium');
+            });
+            // نضيف الاستايل النشط للزرار اللي تداس عليه
+            btn.classList.remove('text-gray-500', 'font-medium');
+            btn.classList.add('text-pink-600', 'font-bold', 'border-b-2', 'border-pink-600');
+
+            // 2. فلترة الجدول
+            const rows = document.querySelectorAll('.booking-row');
+            
+            rows.forEach(row => {
+                const rowStatus = row.getAttribute('data-status');
+                
+                if (status === 'all') {
+                    row.style.display = ''; // إظهار الكل
+                } else if (rowStatus === status) {
+                    row.style.display = ''; // إظهار اللي شبه الفلتر
+                } else {
+                    row.style.display = 'none'; // إخفاء الباقي
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

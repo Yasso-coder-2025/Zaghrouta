@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات زغروطة | اختاري الأفضل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Cairo', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-50">
+            <a href="index.html" class="text-xl font-bold text-pink-600">زغروطة 👰✨</a>
+        <ul class="flex space-x-reverse space-x-4 text-sm font-semibold">
+            <li><a href="index.html" class="hover:text-pink-500">الرئيسية</a></li>
+            <li><a href="services.html" class="text-pink-600">الخدمات</a></li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+        
+        <aside class="w-full md:w-1/4 bg-white p-6 rounded-xl shadow-sm h-fit">
+            <h2 class="font-bold text-lg mb-4 border-b pb-2">تصفية النتائج</h2>
+            
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold">القسم</label>
+                <select class="w-full border p-2 rounded-lg bg-gray-50 focus:ring-pink-500 outline-none">
+                    <option>الكل</option>
+                    <option>قاعات أفراح</option>
+                    <option>فساتين</option>
+                    <option>ميك أب</option>
+                    <option>تصوير (Photographers)</option>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label class="block mb-2 font-semibold">الميزانية (الحد الأقصى)</label>
+                <input type="range" class="w-full accent-pink-600" min="5000" max="100000" step="1000">
+                <div class="flex justify-between text-xs text-gray-500">
+                    <span>5000 ج.م</span>
+                    <span>100,000 ج.م</span>
+                </div>
+            </div>
+
+            <button class="w-full bg-pink-600 text-white py-2 rounded-lg font-bold hover:bg-pink-700 transition">تطبيق الفلتر</button>
+        </aside>
+
+        <section class="w-full md:w-3/4">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold text-gray-900">أفضل العروض المتاحة</h1>
+                <span class="text-gray-500 text-sm">تم العثور على 12 نتيجة</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                    <a href="details.html?type=hall">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=60" alt="قاعة" class="w-full h-full object-cover">
+                        <span class="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-pink-600">قاعة فاخرة</span>
+                    </div>
+                    </a>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg group-hover:text-pink-600 transition cursor-pointer">قاعة الزمردة الملكية</h3>
+                        <p class="text-gray-500 text-sm mb-3">القاهرة، المعادي</p>
+                        <div class="flex justify-between items-center border-t pt-3">
+                            <span class="text-pink-600 font-bold">25,000 ج.م</span>
+                            <button class="text-gray-400 hover:text-red-500">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group border-2 border-pink-100">
+                    <a href="details.html?type=dress">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1594553323242-c194a69990b0?auto=format&fit=crop&w=500&q=60" alt="فستان" class="w-full h-full object-cover">
+                        <span class="absolute top-2 right-2 bg-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold">عرض خاص</span>
+                    </div>
+                    </a>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg group-hover:text-pink-600 transition cursor-pointer">أتيليه "الملكة" للفساتين</h3>
+                        <p class="text-gray-500 text-sm mb-3">الجيزة، الدقي</p>
+                        <div class="flex justify-between items-center border-t pt-3">
+                            <span class="text-pink-600 font-bold">8,500 ج.م</span>
+                            <button class="text-gray-400 hover:text-red-500">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
+                    <div class="relative h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1484863137850-59afccd07598?auto=format&fit=crop&w=500&q=60" alt="ميك اب" class="w-full h-full object-cover">
+                        <span class="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-pink-600">ميك أب آرتيست</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg group-hover:text-pink-600 transition">سارة ميك أب آرتيست</h3>
+                        <p class="text-gray-500 text-sm mb-3">الإسكندرية، سموحة</p>
+                        <div class="flex justify-between items-center border-t pt-3">
+                            <span class="text-pink-600 font-bold">4,000 ج.م</span>
+                            <button class="text-gray-400 hover:text-red-500">❤️</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

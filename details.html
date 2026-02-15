@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الخدمة | زغروطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Cairo', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="text-xl font-bold text-pink-600">زغروطة 👰✨</a>
+        <a href="services.html" class="text-gray-500 hover:text-pink-600 flex items-center gap-2">
+            <span>← العودة للخدمات</span>
+        </a>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <div class="lg:w-2/3">
+                <div class="rounded-3xl overflow-hidden shadow-lg mb-6 h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80" alt="قاعة" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="grid grid-cols-4 gap-4 mb-8">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=300&q=60" class="rounded-xl cursor-pointer hover:opacity-75 transition h-24 object-cover">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=300&q=60" class="rounded-xl cursor-pointer hover:opacity-75 transition h-24 object-cover">
+                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=300&q=60" class="rounded-xl cursor-pointer hover:opacity-75 transition h-24 object-cover">
+                    <div class="bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 font-bold cursor-pointer">+12 صورة</div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm mb-8">
+                    <h1 class="text-3xl font-bold mb-4">قاعة "لوتس" الملكية - التجمع الخامس</h1>
+                    <div class="flex items-center gap-4 text-gray-500 mb-6">
+                        <span class="flex items-center gap-1">📍 القاهرة، التجمع الخامس</span>
+                        <span class="flex items-center gap-1 text-yellow-500">⭐ 4.8 (120 تقييم)</span>
+                    </div>
+                    <h2 class="text-xl font-bold mb-3 border-r-4 border-pink-500 pr-3">عن القاعة</h2>
+                    <p class="leading-relaxed text-gray-600 mb-6">
+                        تعتبر قاعة لوتس من أفخم القاعات التي تقدم تجربة ملكية فريدة. تتسع القاعة لـ 500 فرد وتتميز بديكورات عصرية، نظام إضاءة ذكي، وفريق عمل محترف لخدمة ضيوفك. نوفر لك بوفيه مفتوح يضم تشكيلة واسعة من المأكولات الشرقية والغربية.
+                    </p>
+                    <h2 class="text-xl font-bold mb-3 border-r-4 border-pink-500 pr-3">المميزات</h2>
+                    <ul class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                        <li>✅ تكييف مركزي</li>
+                        <li>✅ غرفة خاصة للعروس</li>
+                        <li>✅ جراج خاص للسيارات</li>
+                        <li>✅ شاشات عرض LED</li>
+                        <li>✅ دي جي وإضاءة ليزر</li>
+                        <li>✅ تصوير فوتوغرافي محترف</li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside class="lg:w-1/3">
+                <div class="bg-white p-6 rounded-2xl shadow-xl border border-pink-50 sticky top-24">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-gray-500 italic">يبدأ السعر من</span>
+                        <span class="text-2xl font-bold text-pink-600">35,000 ج.م</span>
+                    </div>
+
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">تاريخ الحجز</label>
+                            <input type="date" class="w-full border p-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-pink-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">عدد الأفراد المتوقع</label>
+                            <input type="number" placeholder="مثلاً 300" class="w-full border p-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-pink-500 outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-pink-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-pink-700 transition transform hover:-translate-y-1">
+                            احجزي موعد للمعاينة
+                        </button>
+                    </form>
+
+                    <p class="text-xs text-center text-gray-400 mt-4">لا يتم خصم أي مبالغ الآن، الحجز للمعاينة فقط.</p>
+                    
+                    <hr class="my-6">
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">📞</div>
+                        <div>
+                            <p class="text-xs text-gray-500">تواصل مباشر</p>
+                            <p class="font-bold">0100-XXXX-XXX</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+</body>
+</html>

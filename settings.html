@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات | زغروطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style> 
+        body { font-family: 'Cairo', sans-serif; } 
+        /* تنسيق الزرار التوجل (Toggle Switch) */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #db2777;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #db2777;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-[#C2185B] text-white flex flex-col hidden md:flex shadow-2xl z-20">
+        <div class="p-6 text-2xl font-bold border-b border-pink-400 text-center flex items-center justify-center gap-2">
+            <span>✨</span> زغروطة للأعمال
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <a href="vendor-dashboard.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>📊</span> الرئيسية</a>
+            <a href="my-services.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>👗</span> خدماتي</a>
+            <a href="bookings.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>📅</span> الحجوزات</a>
+            <a href="messages.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition"><span>💬</span> الرسائل</a>
+            <a href="settings.html" class="flex items-center gap-3 p-3 rounded-xl bg-white/20 font-bold transition shadow-inner"><span>⚙️</span> الإعدادات</a>
+        </nav>
+        <div class="p-4 border-t border-pink-400">
+            <a href="index.html" class="block p-3 text-center bg-[#880E4F] rounded-xl hover:bg-red-900 transition text-sm font-bold shadow-lg">خروج</a>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <header class="bg-white shadow-sm p-4 flex justify-between items-center px-8 z-10">
+            <h2 class="text-xl font-bold text-gray-700 flex items-center gap-2"><span>⚙️</span> إعدادات الحساب</h2>
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-pink-100 rounded-full border-2 border-pink-500 flex items-center justify-center text-pink-600 font-bold">A</div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8 bg-gray-50">
+            <div class="max-w-4xl mx-auto space-y-8 pb-10">
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8">
+                    <div class="relative group cursor-pointer">
+                        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-pink-100 shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1594553323242-c194a69990b0?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="text-white font-bold text-sm">📷 تغيير</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-right flex-1">
+                        <h2 class="text-2xl font-bold text-gray-800">أتيليه الملكة</h2>
+                        <p class="text-gray-500 mt-1">المستخدم المميز (Premium Vendor)</p>
+                        <div class="mt-4 flex gap-3 justify-center md:justify-start">
+                            <button class="bg-pink-50 text-pink-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-100 transition">رفع صورة جديدة</button>
+                            <button class="bg-gray-50 text-red-500 px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-50 transition">حذف</button>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-8">
+                    
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-bold text-gray-800 mb-6 border-r-4 border-pink-500 pr-3">المعلومات الأساسية</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">اسم النشاط</label>
+                                <input type="text" value="أتيليه الملكة" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">البريد الإلكتروني</label>
+                                <input type="email" value="queen@zaghrouta.com" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition" disabled>
+                                <p class="text-xs text-gray-400 mt-1">لا يمكن تغيير البريد الإلكتروني</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">رقم الهاتف</label>
+                                <input type="tel" value="01099887766" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">العنوان</label>
+                                <input type="text" value="القاهرة، مدينة نصر" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">نبذة عن النشاط</label>
+                                <textarea rows="3" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">أرقى فساتين الزفاف والسواريه بأسعار تناسب الجميع...</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-bold text-gray-800 mb-6 border-r-4 border-pink-500 pr-3">كلمة المرور والأمان</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">كلمة المرور الحالية</label>
+                                <input type="password" placeholder="••••••••" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                            </div>
+                            <div></div> <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">كلمة المرور الجديدة</label>
+                                <input type="password" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-600 mb-2">تأكيد كلمة المرور</label>
+                                <input type="password" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-bold text-gray-800 mb-6 border-r-4 border-pink-500 pr-3">إعدادات الإشعارات</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-gray-700">تنبيهات الحجوزات الجديدة</h4>
+                                    <p class="text-sm text-gray-400">استلام إيميل عند وجود حجز جديد.</p>
+                                </div>
+                                <div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-gray-300 left-0 transition-all duration-300" checked/>
+                                    <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between border-t pt-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-700">رسائل العملاء</h4>
+                                    <p class="text-sm text-gray-400">تفعيل التنبيهات الفورية للرسائل.</p>
+                                </div>
+                                <div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-gray-300 left-0 transition-all duration-300" checked/>
+                                    <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-4 pt-4">
+                        <button type="button" class="px-8 py-3 bg-white border border-gray-300 text-gray-600 rounded-xl font-bold hover:bg-gray-50 transition">إلغاء</button>
+                        <button type="button" class="px-8 py-3 bg-pink-600 text-white rounded-xl font-bold shadow-lg hover:bg-pink-700 hover:-translate-y-1 transition transform">حفظ التعديلات</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
