@@ -5,92 +5,232 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل الخدمة | زغروطة</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Cairo', sans-serif; } </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        /* أنيميشن بسيط لتغيير الصورة */
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0.5; } to { opacity: 1; } }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <nav class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-50">
-        <a href="index.html" class="text-xl font-bold text-pink-600">زغروطة 👰✨</a>
-        <a href="services.html" class="text-gray-500 hover:text-pink-600 flex items-center gap-2">
-            <span>← العودة للخدمات</span>
-        </a>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-pink-600 tracking-wider flex items-center gap-2"><span>✨</span> زغروطة</a>
+            <ul class="hidden md:flex space-x-reverse space-x-8 font-bold text-gray-600">
+                <li><a href="index.html" class="hover:text-pink-600 transition">الرئيسية</a></li>
+                <li><a href="services.html" class="text-pink-600">الخدمات</a></li>
+                <li><a href="contact.html" class="hover:text-pink-600 transition">تواصل معنا</a></li>
+                <li><a href="user-profile.html" class="text-gray-400 hover:text-pink-600 transition text-sm pt-1">👤 حسابي</a></li>
+            </ul>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 text-2xl">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white p-4">
+            <ul class="flex flex-col space-y-4 font-bold text-gray-600 text-center">
+                <li><a href="index.html" class="block py-2 hover:bg-gray-50 rounded-xl">الرئيسية</a></li>
+                <li><a href="services.html" class="block py-2 text-pink-600 bg-pink-50 rounded-xl">الخدمات</a></li>
+                <li><a href="user-profile.html" class="block py-2 hover:bg-gray-50 rounded-xl">👤 حسابي</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8">
-        <div class="flex flex-col lg:flex-row gap-8">
-            
-            <div class="lg:w-2/3">
-                <div class="rounded-3xl overflow-hidden shadow-lg mb-6 h-[400px]">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80" alt="قاعة" class="w-full h-full object-cover">
-                </div>
+    <div class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 text-sm text-gray-500 flex items-center gap-2">
+            <a href="index.html" class="hover:text-pink-600">الرئيسية</a> <span>/</span>
+            <a href="services.html" class="hover:text-pink-600">الخدمات</a> <span>/</span>
+            <span class="text-gray-800 font-bold">قاعة الماسة الملكية</span>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <div class="lg:col-span-2 space-y-8">
                 
-                <div class="grid grid-cols-4 gap-4 mb-8">
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=300&q=60" class="rounded-xl cursor-pointer hover:opacity-75 transition h-24 object-cover">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=300&q=60" class="rounded-xl cursor-pointer hover:opacity-75 transition h-24 object-cover">
-                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=300&q=60" class="rounded-xl cursor-pointer hover:opacity-75 transition h-24 object-cover">
-                    <div class="bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 font-bold cursor-pointer">+12 صورة</div>
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="h-[400px] overflow-hidden rounded-xl mb-4 relative group">
+                        <img id="main-image" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500 hover:scale-105 cursor-pointer">
+                        <span class="absolute top-4 right-4 bg-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">قاعة مميزة</span>
+                    </div>
+                    <div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
+                        <img onclick="changeImage(this)" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=150&q=60" class="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-pink-600 opacity-100 hover:opacity-100 transition">
+                        <img onclick="changeImage(this)" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=150&q=60" class="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-pink-600 opacity-70 hover:opacity-100 transition">
+                        <img onclick="changeImage(this)" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=150&q=60" class="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-pink-600 opacity-70 hover:opacity-100 transition">
+                        <img onclick="changeImage(this)" src="https://images.unsplash.com/photo-1464013778555-8e723c2f01f8?auto=format&fit=crop&w=150&q=60" class="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-pink-600 opacity-70 hover:opacity-100 transition">
+                    </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm mb-8">
-                    <h1 class="text-3xl font-bold mb-4">قاعة "لوتس" الملكية - التجمع الخامس</h1>
-                    <div class="flex items-center gap-4 text-gray-500 mb-6">
-                        <span class="flex items-center gap-1">📍 القاهرة، التجمع الخامس</span>
-                        <span class="flex items-center gap-1 text-yellow-500">⭐ 4.8 (120 تقييم)</span>
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-800 mb-2">قاعة الماسة الملكية</h1>
+                            <p class="text-gray-500 flex items-center gap-2">📍 مدينة نصر، القاهرة (بجوار الاستاد)</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <div class="flex text-yellow-500 text-lg mb-1">★★★★★</div>
+                            <span class="text-sm text-gray-400 font-bold">4.9 (120 تقييم)</span>
+                        </div>
                     </div>
-                    <h2 class="text-xl font-bold mb-3 border-r-4 border-pink-500 pr-3">عن القاعة</h2>
-                    <p class="leading-relaxed text-gray-600 mb-6">
-                        تعتبر قاعة لوتس من أفخم القاعات التي تقدم تجربة ملكية فريدة. تتسع القاعة لـ 500 فرد وتتميز بديكورات عصرية، نظام إضاءة ذكي، وفريق عمل محترف لخدمة ضيوفك. نوفر لك بوفيه مفتوح يضم تشكيلة واسعة من المأكولات الشرقية والغربية.
+
+                    <div class="border-t border-gray-100 my-6"></div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">عن الخدمة</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        قاعة الماسة بتوفرلك تجربة فرح ملوكي، مساحة واسعة تسع حتى 500 فرد، ديكورات مودرن بأحدث صيحات 2026. عندنا فريق كامل لتنظيم الإضاءة والصوت عشان نضمن ليكي ليلة متتنسيش.
                     </p>
-                    <h2 class="text-xl font-bold mb-3 border-r-4 border-pink-500 pr-3">المميزات</h2>
-                    <ul class="grid grid-cols-2 gap-4 text-sm text-gray-700">
-                        <li>✅ تكييف مركزي</li>
-                        <li>✅ غرفة خاصة للعروس</li>
-                        <li>✅ جراج خاص للسيارات</li>
-                        <li>✅ شاشات عرض LED</li>
-                        <li>✅ دي جي وإضاءة ليزر</li>
-                        <li>✅ تصوير فوتوغرافي محترف</li>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">المميزات</h3>
+                    <ul class="grid grid-cols-2 gap-4 text-gray-600">
+                        <li class="flex items-center gap-2">✅ تكييف مركزي</li>
+                        <li class="flex items-center gap-2">✅ جراج خاص (Parking)</li>
+                        <li class="flex items-center gap-2">✅ غرفة للعروسة</li>
+                        <li class="flex items-center gap-2">✅ بوفيه مفتوح</li>
+                        <li class="flex items-center gap-2">✅ دي جي وساوند سيستم</li>
+                        <li class="flex items-center gap-2">✅ تصوير فيديو HD</li>
                     </ul>
                 </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">آراء العرايس (3)</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center font-bold text-pink-600">س</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">سارة أحمد</h4>
+                                <div class="text-yellow-500 text-xs mb-1">★★★★★</div>
+                                <p class="text-gray-600 text-sm">القاعة تحفة والتعامل قمة في الذوق، بجد شكراً ليكم.</p>
+                            </div>
+                        </div>
+                        <hr class="border-gray-100">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600">م</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">منى زكي</h4>
+                                <div class="text-yellow-500 text-xs mb-1">★★★★☆</div>
+                                <p class="text-gray-600 text-sm">المكان جميل بس التكييف كان عالي شوية، غير كده كل حاجة تمام.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <aside class="lg:w-1/3">
-                <div class="bg-white p-6 rounded-2xl shadow-xl border border-pink-50 sticky top-24">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-gray-500 italic">يبدأ السعر من</span>
-                        <span class="text-2xl font-bold text-pink-600">35,000 ج.م</span>
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 sticky top-24">
+                    
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <span class="text-gray-400 text-sm block">سعر الباقة يبدأ من</span>
+                            <span class="text-3xl font-black text-pink-600">25,000 ج.م</span>
+                        </div>
                     </div>
 
                     <form class="space-y-4">
                         <div>
-                            <label class="block text-sm font-semibold mb-1">تاريخ الحجز</label>
-                            <input type="date" class="w-full border p-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-pink-500 outline-none">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">تاريخ الفرح</label>
+                            <input type="date" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none cursor-pointer">
                         </div>
+                        
                         <div>
-                            <label class="block text-sm font-semibold mb-1">عدد الأفراد المتوقع</label>
-                            <input type="number" placeholder="مثلاً 300" class="w-full border p-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-pink-500 outline-none">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">عدد المدعوين (تقريبي)</label>
+                            <select class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none cursor-pointer">
+                                <option>100 - 200 فرد</option>
+                                <option>200 - 300 فرد</option>
+                                <option>300 - 500 فرد</option>
+                                <option>أكثر من 500</option>
+                            </select>
                         </div>
-                        <button type="submit" class="w-full bg-pink-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-pink-700 transition transform hover:-translate-y-1">
-                            احجزي موعد للمعاينة
+
+                        <button type="button" onclick="location.href='checkout.html'" class="w-full bg-pink-600 text-white py-4 rounded-xl font-bold shadow-md hover:bg-pink-700 hover:shadow-lg transition transform hover:-translate-y-1 flex justify-center items-center gap-2 text-lg">
+                            <span>📅</span> احجز الميعاد
+                        </button>
+
+                        <button type="button" class="w-full bg-white border-2 border-pink-100 text-pink-600 py-3 rounded-xl font-bold hover:bg-pink-50 transition flex justify-center items-center gap-2">
+                            <span>💬</span> شات مع المورد
                         </button>
                     </form>
 
-                    <p class="text-xs text-center text-gray-400 mt-4">لا يتم خصم أي مبالغ الآن، الحجز للمعاينة فقط.</p>
-                    
-                    <hr class="my-6">
-                    
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">📞</div>
-                        <div>
-                            <p class="text-xs text-gray-500">تواصل مباشر</p>
-                            <p class="font-bold">0100-XXXX-XXX</p>
+                    <div class="mt-6 pt-6 border-t text-center">
+                        <p class="text-xs text-gray-400 mb-2">هذا المورد موثوق وتم التحقق منه ✅</p>
+                        <div class="flex items-center justify-center gap-3">
+                            <img src="https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg" class="w-10 h-10 rounded-full object-cover">
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-gray-800">إدارة القاعة</p>
+                                <p class="text-xs text-gray-500">متواجد للرد السريع</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </aside>
+            </div>
 
         </div>
-    </main>
+
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">ممكن يعجبك كمان</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1464013778555-8e723c2f01f8?auto=format&fit=crop&w=500&q=60" class="h-40 w-full object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-gray-800">قاعة اللؤلؤة</h3>
+                        <p class="text-pink-600 font-bold text-sm">18,000 ج.م</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=60" class="h-40 w-full object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-gray-800">فيلا الأفراح (Open Air)</h3>
+                        <p class="text-pink-600 font-bold text-sm">30,000 ج.م</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=500&q=60" class="h-40 w-full object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-gray-800">قاعة الفيروز</h3>
+                        <p class="text-pink-600 font-bold text-sm">15,000 ج.م</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-gray-900 text-white py-8 mt-auto text-center">
+        <p class="text-gray-500 text-sm">&copy; 2026 جميع الحقوق محفوظة لزغروطة.</p>
+    </footer>
+
+    <script>
+        // 1. Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // 2. Image Gallery Function
+        function changeImage(element) {
+            const mainImage = document.getElementById('main-image');
+            
+            // إضافة أنيميشن عشان التغيير يكون ناعم
+            mainImage.classList.remove('fade-in'); // نشيلها لو موجودة
+            void mainImage.offsetWidth; // Trigger reflow (خدعة عشان الأنيميشن يشتغل تاني)
+            mainImage.classList.add('fade-in'); // نضيفها تاني
+            
+            // تغيير المصدر
+            mainImage.src = element.src.replace('&w=150', '&w=800'); // نجيب الصورة الكبيرة
+
+            // تظبيط البوردر (Active State)
+            // نشيل البوردر من كله ونقلل الشفافية
+            const thumbs = element.parentElement.children;
+            for (let thumb of thumbs) {
+                thumb.classList.remove('border-pink-600', 'opacity-100');
+                thumb.classList.add('border-transparent', 'opacity-70');
+            }
+            // نحط البوردر على الصورة اللي داس عليها
+            element.classList.remove('border-transparent', 'opacity-70');
+            element.classList.add('border-pink-600', 'opacity-100');
+        }
+    </script>
 
 </body>
 </html>

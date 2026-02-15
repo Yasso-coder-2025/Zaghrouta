@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خططي لفرحك | زغروطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        /* أنيميشن ناعم للتنقل بين الخطوات */
+        .step-content { display: none; animation: fadeIn 0.5s ease-out; }
+        .step-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* شكل الاختيارات */
+        .select-card:checked + div {
+            border-color: #db2777;
+            background-color: #fdf2f8;
+            color: #db2777;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 to-white min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden relative min-h-[500px] flex flex-col">
+        
+        <div class="p-8 pb-0">
+            <div class="flex justify-between items-center mb-6">
+                <a href="index.html" class="text-gray-400 hover:text-pink-600 text-sm font-bold">✕ إلغاء ورجوع</a>
+                <span class="text-pink-600 font-bold tracking-widest">زغروطة ✨</span>
+            </div>
+            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                <div id="progress-bar" class="bg-pink-600 h-full w-1/3 transition-all duration-500 ease-in-out"></div>
+            </div>
+        </div>
+
+        <form id="planningForm" class="p-8 flex-1 flex flex-col justify-center">
+            
+            <div id="step1" class="step-content active">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">ألف مبروك! 🎉</h2>
+                <p class="text-gray-500 mb-8 text-lg">خلينا نبدأ بالأساسيات.. الفرح امتى وفين؟</p>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">موعد الفرح (تقريبي)</label>
+                        <input type="date" class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-pink-500 outline-none text-gray-600 font-bold">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">المدينة</label>
+                        <select class="w-full p-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-pink-500 outline-none text-gray-600 font-bold cursor-pointer">
+                            <option>القاهرة</option>
+                            <option>الإسكندرية</option>
+                            <option>الجيزة</option>
+                            <option>المنصورة</option>
+                            <option>أخرى</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step2" class="step-content">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">ظبطي الميزانية 💰</h2>
+                <p class="text-gray-500 mb-8 text-lg">عشان نطلعلك حاجات تناسب جيبك وما تخرمش الميزانية.</p>
+                
+                <div class="space-y-8">
+                    <div class="text-center">
+                        <span class="text-4xl font-black text-pink-600" id="budget-display">50,000</span>
+                        <span class="text-gray-400 font-bold">ج.م</span>
+                    </div>
+                    <input type="range" min="5000" max="200000" step="1000" value="50000" class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-pink-600" oninput="document.getElementById('budget-display').innerText = parseInt(this.value).toLocaleString()">
+                    
+                    <div class="flex justify-between text-xs text-gray-400 font-bold">
+                        <span>على قد الإيد</span>
+                        <span>متوسط</span>
+                        <span>فخم جداً</span>
+                    </div>
+
+                    <div class="bg-pink-50 p-4 rounded-xl border border-pink-100 text-sm text-pink-800 flex gap-3 items-start">
+                        <span>💡</span>
+                        <p>نصيحة: دايماً زودي 10% على الميزانية دي للطوارئ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step3" class="step-content">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">محتاجة إيه بالظبط؟ 🤔</h2>
+                <p class="text-gray-500 mb-8 text-lg">اختاري الخدمات اللي بتدوري عليها دلوقتي.</p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <label class="cursor-pointer">
+                        <input type="checkbox" class="hidden select-card">
+                        <div class="border-2 border-gray-100 rounded-2xl p-6 text-center hover:border-pink-200 transition h-full flex flex-col justify-center">
+                            <div class="text-4xl mb-2">👗</div>
+                            <span class="font-bold">فستان</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" class="hidden select-card" checked>
+                        <div class="border-2 border-gray-100 rounded-2xl p-6 text-center hover:border-pink-200 transition h-full flex flex-col justify-center">
+                            <div class="text-4xl mb-2">🏨</div>
+                            <span class="font-bold">قاعة</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" class="hidden select-card">
+                        <div class="border-2 border-gray-100 rounded-2xl p-6 text-center hover:border-pink-200 transition h-full flex flex-col justify-center">
+                            <div class="text-4xl mb-2">💄</div>
+                            <span class="font-bold">ميك أب</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" class="hidden select-card">
+                        <div class="border-2 border-gray-100 rounded-2xl p-6 text-center hover:border-pink-200 transition h-full flex flex-col justify-center">
+                            <div class="text-4xl mb-2">📸</div>
+                            <span class="font-bold">تصوير</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div id="loading-step" class="step-content text-center py-10">
+                <div class="w-20 h-20 border-4 border-pink-200 border-t-pink-600 rounded-full animate-spin mx-auto mb-6"></div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">بندورلك على أحسن حاجة...</h2>
+                <p class="text-gray-500">جاري تصفية النتائج حسب ميزانيتك 🧐</p>
+            </div>
+
+        </form>
+
+        <div class="p-8 pt-0 flex justify-between items-center" id="nav-buttons">
+            <button type="button" id="prevBtn" onclick="prevStep()" class="text-gray-400 font-bold hover:text-gray-600 invisible">رجوع</button>
+            <button type="button" id="nextBtn" onclick="nextStep()" class="bg-pink-600 text-white px-10 py-3 rounded-xl font-bold shadow-lg hover:bg-pink-700 hover:shadow-xl transition transform hover:-translate-y-1">
+                التالي ⬅
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function updateUI() {
+            // 1. Progress Bar
+            const percentage = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+
+            // 2. Show/Hide Steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            if (currentStep <= totalSteps) {
+                document.getElementById('step' + currentStep).classList.add('active');
+            }
+
+            // 3. Buttons Visibility
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const navButtons = document.getElementById('nav-buttons');
+
+            if (currentStep === 1) prevBtn.classList.add('invisible');
+            else prevBtn.classList.remove('invisible');
+
+            if (currentStep === totalSteps) nextBtn.innerText = "عرض النتائج ✨";
+            else nextBtn.innerText = "التالي ⬅";
+
+            if (currentStep > totalSteps) navButtons.style.display = 'none'; // Hide buttons on loading
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+            } else {
+                // Finish Logic
+                finishPlanning();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        function finishPlanning() {
+            currentStep++; // Move to hypothetical step 4
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('loading-step').classList.add('active');
+            document.getElementById('nav-buttons').style.display = 'none';
+
+            // محاكاة التحميل وبعدين التوجيه
+            setTimeout(() => {
+                window.location.href = "services.html"; // التوجيه لصفحة الخدمات
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>

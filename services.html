@@ -3,109 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات زغروطة | اختاري الأفضل</title>
+    <title>الخدمات | زغروطة</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Cairo', sans-serif; } </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        /* تحسين شكل السكرول بار */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #db2777; border-radius: 4px; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <nav class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-50">
-            <a href="index.html" class="text-xl font-bold text-pink-600">زغروطة 👰✨</a>
-        <ul class="flex space-x-reverse space-x-4 text-sm font-semibold">
-            <li><a href="index.html" class="hover:text-pink-500">الرئيسية</a></li>
-            <li><a href="services.html" class="text-pink-600">الخدمات</a></li>
-        </ul>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-extrabold text-pink-600 tracking-wider flex items-center gap-2">
+                    <span>✨</span> زغروطة
+                </a>
+                
+                <ul class="hidden md:flex space-x-reverse space-x-8 font-bold text-gray-600">
+                    <li><a href="index.html" class="hover:text-pink-600 transition">الرئيسية</a></li>
+                    <li><a href="services.html" class="text-pink-600">الخدمات</a></li>
+                    <li><a href="contact.html" class="hover:text-pink-600 transition">تواصل معنا</a></li>
+                    <li><a href="user-profile.html" class="text-gray-400 hover:text-pink-600 transition text-sm pt-1">👤 حسابي</a></li>
+                </ul>
+
+                <div class="hidden md:block">
+                    <a href="auth.html" class="bg-pink-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-pink-700 transition shadow-lg">دخول / تسجيل</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-100">
+                <ul class="flex flex-col space-y-4 mt-4 font-bold text-gray-600 text-center">
+                    <li><a href="index.html" class="block py-2 hover:bg-gray-50 rounded-xl">الرئيسية</a></li>
+                    <li><a href="services.html" class="block py-2 text-pink-600 bg-pink-50 rounded-xl">الخدمات</a></li>
+                    <li><a href="contact.html" class="block py-2 hover:bg-gray-50 rounded-xl">تواصل معنا</a></li>
+                    <li><a href="user-profile.html" class="block py-2 hover:bg-gray-50 rounded-xl">👤 حسابي</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+    <div class="container mx-auto px-4 py-8 flex-1">
         
-        <aside class="w-full md:w-1/4 bg-white p-6 rounded-xl shadow-sm h-fit">
-            <h2 class="font-bold text-lg mb-4 border-b pb-2">تصفية النتائج</h2>
+        <button id="mobile-filter-btn" class="md:hidden w-full bg-white border border-gray-200 text-gray-700 font-bold py-3 rounded-xl mb-6 flex items-center justify-center gap-2 shadow-sm">
+            <span>⚙️</span> تصفية النتائج
+        </button>
+
+        <div class="flex flex-col md:flex-row gap-8">
             
-            <div class="mb-6">
-                <label class="block mb-2 font-semibold">القسم</label>
-                <select class="w-full border p-2 rounded-lg bg-gray-50 focus:ring-pink-500 outline-none">
-                    <option>الكل</option>
-                    <option>قاعات أفراح</option>
-                    <option>فساتين</option>
-                    <option>ميك أب</option>
-                    <option>تصوير (Photographers)</option>
-                </select>
-            </div>
-
-            <div class="mb-6">
-                <label class="block mb-2 font-semibold">الميزانية (الحد الأقصى)</label>
-                <input type="range" class="w-full accent-pink-600" min="5000" max="100000" step="1000">
-                <div class="flex justify-between text-xs text-gray-500">
-                    <span>5000 ج.م</span>
-                    <span>100,000 ج.م</span>
+            <aside id="filters-sidebar" class="hidden md:block w-full md:w-1/4 bg-white p-6 rounded-2xl shadow-sm h-fit border border-gray-100 sticky top-24">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-bold text-xl">البحث المتقدم</h2>
+                    <button id="close-filter-btn" class="md:hidden text-gray-400">✕</button>
                 </div>
-            </div>
 
-            <button class="w-full bg-pink-600 text-white py-2 rounded-lg font-bold hover:bg-pink-700 transition">تطبيق الفلتر</button>
-        </aside>
-
-        <section class="w-full md:w-3/4">
-            <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-bold text-gray-900">أفضل العروض المتاحة</h1>
-                <span class="text-gray-500 text-sm">تم العثور على 12 نتيجة</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="mb-6 relative">
+                    <input type="text" placeholder="اسم القاعة، الفستان..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none">
+                    <span class="absolute left-3 top-3.5 text-gray-400">🔍</span>
+                </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
-                    <a href="details.html?type=hall">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=60" alt="قاعة" class="w-full h-full object-cover">
-                        <span class="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-pink-600">قاعة فاخرة</span>
-                    </div>
-                    </a>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg group-hover:text-pink-600 transition cursor-pointer">قاعة الزمردة الملكية</h3>
-                        <p class="text-gray-500 text-sm mb-3">القاهرة، المعادي</p>
-                        <div class="flex justify-between items-center border-t pt-3">
-                            <span class="text-pink-600 font-bold">25,000 ج.م</span>
-                            <button class="text-gray-400 hover:text-red-500">❤️</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group border-2 border-pink-100">
-                    <a href="details.html?type=dress">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1594553323242-c194a69990b0?auto=format&fit=crop&w=500&q=60" alt="فستان" class="w-full h-full object-cover">
-                        <span class="absolute top-2 right-2 bg-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold">عرض خاص</span>
-                    </div>
-                    </a>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg group-hover:text-pink-600 transition cursor-pointer">أتيليه "الملكة" للفساتين</h3>
-                        <p class="text-gray-500 text-sm mb-3">الجيزة، الدقي</p>
-                        <div class="flex justify-between items-center border-t pt-3">
-                            <span class="text-pink-600 font-bold">8,500 ج.م</span>
-                            <button class="text-gray-400 hover:text-red-500">❤️</button>
-                        </div>
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3 text-sm text-gray-500 uppercase">القسم</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-3 cursor-pointer hover:bg-pink-50 p-2 rounded-lg transition">
+                            <input type="radio" name="category" class="accent-pink-600 w-5 h-5" checked>
+                            <span>الكل</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer hover:bg-pink-50 p-2 rounded-lg transition">
+                            <input type="radio" name="category" class="accent-pink-600 w-5 h-5">
+                            <span>قاعات أفراح</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer hover:bg-pink-50 p-2 rounded-lg transition">
+                            <input type="radio" name="category" class="accent-pink-600 w-5 h-5">
+                            <span>فساتين زفاف</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer hover:bg-pink-50 p-2 rounded-lg transition">
+                            <input type="radio" name="category" class="accent-pink-600 w-5 h-5">
+                            <span>ميك أب آرتيست</span>
+                        </label>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1484863137850-59afccd07598?auto=format&fit=crop&w=500&q=60" alt="ميك اب" class="w-full h-full object-cover">
-                        <span class="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-pink-600">ميك أب آرتيست</span>
+                <!-- <div class="mb-6">
+                    <h3 class="font-bold mb-3 text-sm text-gray-500 uppercase">نطاق السعر</h3>
+                    <input type="range" class="w-full accent-pink-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1000" max="1000000" step="500" value="25000" oninput="document.getElementById('price-display').innerText = parseInt(this.value).toLocaleString() + ' ج.م'">
+                    <div class="flex justify-between text-xs text-gray-500 mt-2 font-bold">
+                        <span>1,000 ج.م</span>
+                        <span id="price-display" class="text-pink-600 text-lg">25,000 ج.م</span>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg group-hover:text-pink-600 transition">سارة ميك أب آرتيست</h3>
-                        <p class="text-gray-500 text-sm mb-3">الإسكندرية، سموحة</p>
-                        <div class="flex justify-between items-center border-t pt-3">
-                            <span class="text-pink-600 font-bold">4,000 ج.م</span>
-                            <button class="text-gray-400 hover:text-red-500">❤️</button>
-                        </div>
-                    </div>
+                </div> -->
+
+                <div class="mb-6">
+    <h3 class="font-bold mb-3 text-sm text-gray-500 uppercase">الحد الأقصى للسعر</h3>
+    
+    <input type="range" id="price-slider" class="w-full accent-pink-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mb-4" min="1000" max="1000000" step="500" value="25000">
+    
+    <div class="flex items-center gap-2">
+        <span class="text-gray-400 font-bold text-sm">أقصى سعر:</span>
+        <input type="number" id="price-input" class="w-full p-2 border border-gray-300 rounded-lg text-pink-600 font-bold text-center focus:ring-2 focus:ring-pink-500 outline-none" value="25000">
+        <span class="text-gray-400 font-bold text-sm">ج.م</span>
+    </div>
+</div>
+
+                <button class="w-full bg-pink-600 text-white py-3 rounded-xl font-bold hover:bg-pink-700 transition shadow-md">تطبيق الفلتر</button>
+            </aside>
+
+            <section class="w-full md:w-3/4">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">أحدث العروض <span class="text-pink-600 text-sm font-normal">(12 نتيجة)</span></h1>
+                    <select class="bg-white border p-2 rounded-lg text-sm focus:ring-pink-500 outline-none">
+                        <option>الأحدث</option>
+                        <option>الأقل سعراً</option>
+                        <option>الأعلى تقييماً</option>
+                    </select>
                 </div>
 
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition group border border-gray-100 flex flex-col">
+                        <div class="relative h-56 bg-gray-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <span class="absolute top-3 right-3 bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold shadow-sm">قاعة</span>
+                            <button class="absolute top-3 left-3 bg-white/50 hover:bg-white p-2 rounded-full transition text-red-500 heart-btn">🤍</button>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-pink-600 transition">قاعة الماسة</h3>
+                                <div class="flex items-center gap-1 text-yellow-500 text-sm font-bold">⭐ 4.9</div>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 flex items-center gap-1">📍 مدينة نصر، القاهرة</p>
+                            <div class="mt-auto flex justify-between items-center border-t pt-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">يبدأ من</span>
+                                    <span class="font-bold text-pink-600 text-lg">25,000 ج.م</span>
+                                </div>
+                                <a href="details.html?id=1" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-600 transition">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition group border border-gray-100 flex flex-col">
+                        <div class="relative h-56 bg-gray-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1594553323242-c194a69990b0?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <span class="absolute top-3 right-3 bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold shadow-sm">فستان</span>
+                            <button class="absolute top-3 left-3 bg-white/50 hover:bg-white p-2 rounded-full transition text-red-500 heart-btn">🤍</button>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-pink-600 transition">فستان سندريلا</h3>
+                                <div class="flex items-center gap-1 text-yellow-500 text-sm font-bold">⭐ 4.5</div>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 flex items-center gap-1">📍 التجمع الخامس</p>
+                            <div class="mt-auto flex justify-between items-center border-t pt-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">إيجار</span>
+                                    <span class="font-bold text-pink-600 text-lg">5,000 ج.م</span>
+                                </div>
+                                <a href="details.html?id=2" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-600 transition">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition group border border-gray-100 flex flex-col">
+                        <div class="relative h-56 bg-gray-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=500&q=60" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                            <span class="absolute top-3 right-3 bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold shadow-sm">ميك أب</span>
+                            <button class="absolute top-3 left-3 bg-white/50 hover:bg-white p-2 rounded-full transition text-red-500 heart-btn">🤍</button>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-pink-600 transition">سارة ميك أب</h3>
+                                <div class="flex items-center gap-1 text-yellow-500 text-sm font-bold">⭐ 5.0</div>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 flex items-center gap-1">📍 المهندسين</p>
+                            <div class="mt-auto flex justify-between items-center border-t pt-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">باكيدج زفاف</span>
+                                    <span class="font-bold text-pink-600 text-lg">3,500 ج.م</span>
+                                </div>
+                                <a href="details.html?id=3" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-pink-600 transition">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-12 flex justify-center gap-2">
+                    <button class="w-10 h-10 rounded-lg border hover:bg-pink-50 flex items-center justify-center text-gray-500">‹</button>
+                    <button class="w-10 h-10 rounded-lg bg-pink-600 text-white font-bold flex items-center justify-center shadow-md">1</button>
+                    <button class="w-10 h-10 rounded-lg border hover:bg-pink-50 flex items-center justify-center text-gray-500">2</button>
+                    <button class="w-10 h-10 rounded-lg border hover:bg-pink-50 flex items-center justify-center text-gray-500">3</button>
+                    <button class="w-10 h-10 rounded-lg border hover:bg-pink-50 flex items-center justify-center text-gray-500">›</button>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-white pt-12 pb-6 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold text-pink-500 mb-4">زغروطة </h3>
+            <p class="text-gray-400 mb-8">معاكي خطوة بخطوة لحد ما تكمل فرحتك.</p>
+            <div class="border-t border-gray-800 pt-6 text-sm text-gray-500">
+                &copy; 2026 جميع الحقوق محفوظة.
             </div>
-        </section>
-    </main>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Mobile Filter Toggle
+        const filterBtn = document.getElementById('mobile-filter-btn');
+        const sidebar = document.getElementById('filters-sidebar');
+        const closeFilter = document.getElementById('close-filter-btn');
+
+        filterBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+
+        closeFilter.addEventListener('click', () => {
+            sidebar.classList.add('hidden');
+        });
+
+        // 3. Heart Toggle Animation
+        document.querySelectorAll('.heart-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                if(this.textContent === '🤍') {
+                    this.textContent = '❤️';
+                    this.classList.add('scale-125');
+                    setTimeout(() => this.classList.remove('scale-125'), 200);
+                } else {
+                    this.textContent = '🤍';
+                }
+            });
+        });
+        // --- كود ربط السعر (Slider + Input) ---
+const slider = document.getElementById('price-slider');
+const input = document.getElementById('price-input');
+
+// 1. لما تحرك السلايدر -> يغير الرقم المكتوب
+slider.addEventListener('input', function() {
+    input.value = this.value;
+});
+
+// 2. لما تكتب رقم بإيدك -> يغير مكان السلايدر
+input.addEventListener('input', function() {
+    // نتأكد إن الرقم مش أكبر من الحد الأقصى للسلايدر
+    let val = parseInt(this.value);
+    if (val > 50000) val = 50000;
+    if (val < 1000) val = 1000;
+    
+    slider.value = val;
+});
+    </script>
 
 </body>
 </html>
